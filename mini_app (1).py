@@ -264,7 +264,7 @@ elif view_mode in ["Monthly Mean Kriging","Seasonal Kriging"]:
     grid_df = mask_grid_to_polygon(gx, gy, z_total, kerala_poly)
 
     fig = px.density_mapbox(grid_df, lat="lat", lon="lon", z="value", radius=8,
-                            zoom=7, height=700, color_continuous_scale="Turbo")
+                            zoom=8, height=700, color_continuous_scale="Turbo")
     fig.update_layout(mapbox_style="open-street-map")
     st.plotly_chart(fig, use_container_width=True)
 
@@ -277,7 +277,7 @@ elif view_mode == "Yearly Heatmap Animation (2018–2025)":
     df_anim = df_year.groupby("year").apply(lambda g: g.sample(min(max_year, len(g)))).reset_index(drop=True)
 
     fig = px.density_mapbox(df_anim, lat="lat", lon="lon", z=pollutant,
-                            animation_frame="year", radius=18, zoom=7,
+                            animation_frame="year", radius=18, zoom=8,
                             height=750, color_continuous_scale="Turbo")
     fig.update_layout(mapbox_style="open-street-map")
     st.plotly_chart(fig, use_container_width=True)
